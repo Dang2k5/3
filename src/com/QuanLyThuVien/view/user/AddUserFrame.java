@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
 
 public class AddUserFrame extends javax.swing.JFrame {
 
-    User userModel;
+    User user;
     UserService userService;
     public AddUserFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-        userModel = new User();
+        user = new User();
         userService = new UserService();
         
         jComboBox_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Độc giả", "Thủ thư"}));
@@ -101,7 +101,7 @@ public class AddUserFrame extends javax.swing.JFrame {
         jLabel13.setText("Enter Password");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, -1));
 
-        jComboBox_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sách  Ngôn Tình", "Sách Tiểu thuyết", "Sách kinh doanh", "Sách IT" }));
+        jComboBox_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Độc giả", "Thủ thư", " " }));
         jPanel1.add(jComboBox_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 240, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -116,7 +116,7 @@ public class AddUserFrame extends javax.swing.JFrame {
                 btn_addActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 90, 40));
+        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 90, 40));
 
         btn_back.setBackground(new java.awt.Color(255, 51, 0));
         btn_back.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -126,7 +126,7 @@ public class AddUserFrame extends javax.swing.JFrame {
                 btn_backActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 90, 40));
+        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, 90, 40));
 
         txt_confirmPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(txt_confirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 240, -1));
@@ -150,31 +150,28 @@ public class AddUserFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
-        userModel.setName(txt_name.getText());
-        userModel.setPhone(txt_phone.getText());
-        userModel.setFlag(1);
+        user.setName(txt_name.getText());
+        user.setPhone(txt_phone.getText());
+        user.setFlag(1);
         
-        if(String.valueOf(jComboBox_role.getSelectedItem()).equals("Nhân viên")){
-            userModel.setLeve(2);
+        if(String.valueOf(jComboBox_role.getSelectedItem()).equals("Độc giả")){
+            user.setLeve(2);
         }
         else{
-            userModel.setLeve(1);
-        }
-        
+            user.setLeve(1);
+        }        
         if(txt_password.getText().equals(txt_confirmPassword.getText())){
-            userModel.setPassword(txt_password.getText());
-            if(userModel == userService.CheckUsername(txt_username.getText())){
-                userModel.setUsername(txt_username.getText());
-                userService.addUser(userModel);
+            user.setPassword(txt_password.getText());
+            if(user != userService.CheckUsername(txt_username.getText())){
+                user.setUsername(txt_username.getText());
+                userService.addUser(user);
                 this.dispose();
             }
             else{

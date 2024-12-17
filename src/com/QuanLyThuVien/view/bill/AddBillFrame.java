@@ -355,7 +355,7 @@ public class AddBillFrame extends javax.swing.JFrame {
         billDetailService = new BillDetailService();    
         
         
-        billModel.setDate(dateTextField.getText());
+        billModel.setDate_muon(dateTextField.getText());
         billModel.setDate_hen(dateHenTextField.getText());
         billModel.setDeposit(depositTextField.getText());
         

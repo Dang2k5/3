@@ -104,7 +104,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("CopyRight 2024 @Book");
 
-        jComboBox_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thủ thư ", "Độc giả", "Quản trị viên" }));
+        jComboBox_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản trị viên", "Thủ thư ", "Độc giả", " " }));
 
         javax.swing.GroupLayout jpnRoot2Layout = new javax.swing.GroupLayout(jpnRoot2);
         jpnRoot2.setLayout(jpnRoot2Layout);
@@ -133,7 +133,7 @@ public class LoginFrame extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBox_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(49, 49, 49))
         );
         jpnRoot2Layout.setVerticalGroup(
@@ -186,49 +186,46 @@ public class LoginFrame extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         String username = txtUsername.getText();
         String password = txtPassword.getText();
-        String role = String.valueOf(jComboBox_Role.getSelectedItem());
+        int role = jComboBox_Role.getSelectedIndex(); // 0: Quản trị viên, 1: Thủ thư, 2: Độc giả
         UserService userService = new UserService();
         User user = userService.CheckUsername(username);
-        if(role.equals("Quản trị viên") && user.getUsername().equals("admin") && user.getLeve() == 0){
-            JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
-            Dashboard testDasdboard = new Dashboard();
-            testDasdboard.setVisible(true);
-            testDasdboard.pack();
-            testDasdboard.setLocationRelativeTo(null); 
-            this.dispose(); 
-        }else if(role.equals("Thủ thư") && user.getUsername().equals(username) && user.getLeve() == 1){
-            JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
+        if (user == null) {
+            JOptionPane.showMessageDialog(this, "Tên đăng nhập không tồn tại.");
+            return;
+        }
+        if (!user.getPassword().equals(password)) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu không đúng.");
+            return;
+        }
+        int roleIndex = jComboBox_Role.getSelectedIndex(); // 0: Quản trị viên, 1: Thủ thư, 2: Độc giả
+        if (roleIndex != user.getLeve()) {
+            JOptionPane.showMessageDialog(this, "Vai trò không khớp.");
+            return;
+        }
+        if (roleIndex == 0 && user.getUsername().equals("admin")) { // Quản trị viên
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công.");
+            Dashboard testDashboard = new Dashboard();
+            testDashboard.setVisible(true);
+            testDashboard.pack();
+            testDashboard.setLocationRelativeTo(null);
+            this.dispose();
+        } else if (roleIndex == 1) { // Thủ thư
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công.");
             LibrarianFrame lf = new LibrarianFrame();
             lf.setVisible(true);
             lf.pack();
-            lf.setLocationRelativeTo(null); 
-            this.dispose(); 
-        }else if(role.equals("Độc giả") && user.getUsername().equals(username) && user.getLeve() == 2){           
-            JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
+            lf.setLocationRelativeTo(null);
+            this.dispose();
+        } else if (roleIndex == 2) { // Độc giả
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công.");
             ReaderFrame rf = new ReaderFrame();
             rf.setVisible(true);
             rf.pack();
-            rf.setLocationRelativeTo(null); 
-            this.dispose(); 
-        }else{
-            JOptionPane.showMessageDialog(this, "Dang nhap that bai");
+            rf.setLocationRelativeTo(null);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại.");
         }
-        
-        
-//        UserDao ds = new UserDao();
-//        User user = ds.checkLogin(username, password);
-//        boolean check = false;
-//        if(user != null){
-//                JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
-//                Dashboard testDasdboard = new Dashboard();
-//                testDasdboard.setVisible(true);
-//                testDasdboard.pack();
-//                testDasdboard.setLocationRelativeTo(null); // Frame Center
-//                this.dispose();            
-//                check = true;
-//          }
-//        if(check == false)
-//            JOptionPane.showMessageDialog(this, "Dang nhap that bai");
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed

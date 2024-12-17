@@ -3,11 +3,12 @@ package com.QuanLyThuVien.view;
 
 import com.QuanLyThuVien.dao.UserDao;
 import com.QuanLyThuVien.model.User;
+import com.QuanLyThuVien.service.UserService;
 import javax.swing.JOptionPane;
 
 public class RegisterFrame extends javax.swing.JFrame {
 
-    
+    UserService userService = new UserService();
     public RegisterFrame() {
         initComponents();
     }
@@ -242,7 +243,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
-        String role = String.valueOf(jComboBox_role.getSelectedItem());
+        int role = jComboBox_role.getSelectedIndex();
         
         if(name.equals("")){
             JOptionPane.showMessageDialog(this, "Tên không được để trống");
@@ -254,28 +255,40 @@ public class RegisterFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp");
         }else{
             User user = new User();
-            if(role.equals("Thủ thư")){
+            if(role == 0){
                 user.setName(name);
                 user.setLeve(1);
                 user.setPhone(phone);
                 user.setUsername(username);
                 user.setPassword(password);
-                user.setFlag(1);
-            }else if(role.equals("Độc giả")){
+                user.setFlag(1);     
+                userService.addUser(user);
+                JOptionPane.showMessageDialog(this, "Đăng kí tài khoản thủ thư thành công");
+                LoginFrame loginFrame = new LoginFrame();
+                loginFrame.setVisible(true);
+                loginFrame.pack();
+                loginFrame.setLocationRelativeTo(null); // Frame Center
+                loginFrame.setResizable(false);
+                this.dispose();
+            }else if(role == 1){
                 user.setName(name);
                 user.setLeve(2);
                 user.setPhone(phone);
                 user.setUsername(username);
                 user.setPassword(password);
                 user.setFlag(1);
-            }
-            ds.addUser(user);
-            LoginFrame loginFrame = new LoginFrame();
-            loginFrame.setVisible(true);
-            loginFrame.pack();
-            loginFrame.setLocationRelativeTo(null); // Frame Center
-            loginFrame.setResizable(false);
-            this.dispose();
+                userService.addUser(user);
+                JOptionPane.showMessageDialog(this, "Đăng kí tài khoản độc giả thành công");
+                LoginFrame loginFrame = new LoginFrame();
+                loginFrame.setVisible(true);
+                loginFrame.pack();
+                loginFrame.setLocationRelativeTo(null); // Frame Center
+                loginFrame.setResizable(false);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Đăng kí tài khoản không hợp lệ");
+            }              
+            
             }                                  
     }//GEN-LAST:event_RegisterButtonActionPerformed
 

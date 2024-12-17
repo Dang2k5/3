@@ -239,6 +239,25 @@ public class BookDao {
         }
         return books;
     }
-    
+    public int getCountBook(int book_id){
+        Connection connection = DBConnect.getJDBCConnection();
+        
+        String sql = "SELECT COUNT(*) FROM BOOK";    
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, book_id);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            int index=0;
+            while(rs.next()){
+                index++;
+            }
+            
+            return index;
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
    
 }

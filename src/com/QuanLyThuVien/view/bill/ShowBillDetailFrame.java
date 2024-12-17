@@ -43,7 +43,7 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         idUserLabel.setText(String.valueOf(billModel.getUser_id()));
         nameReaderLabel.setText(readerService.getReaderById(billModel.getReader_id()).getName());
         nameUserLabel.setText(userService.getUserById(billModel.getUser_id()).getName());
-        ngayMuonLabel.setText(billModel.getDate());
+        ngayMuonLabel.setText(billModel.getDate_muon());
         ngayHenTraLabel.setText(billModel.getDate_hen());
         depositLabel.setText(billModel.getDeposit());
         defaultTableModel = new DefaultTableModel(){

@@ -6,7 +6,7 @@ public class Bill {
     private int reader_id;
     private int user_id;
     private String deposit;
-    private String date;
+    private String date_muon;
     private String date_hen;
 
     public String getDate_hen() {
@@ -49,12 +49,12 @@ public class Bill {
         this.deposit = deposit;
     }
 
-    public String getDate() {
-        return date;
+    public String getDate_muon() {
+        return date_muon;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate_muon(String date_muon) {
+        this.date_muon = date_muon;
     }
     
     

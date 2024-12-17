@@ -1,11 +1,16 @@
 
 package com.QuanLyThuVien.view;
 
+import com.QuanLyThuVien.model.Book;
+import com.QuanLyThuVien.model.User;
+import com.QuanLyThuVien.service.BookService;
+import com.QuanLyThuVien.service.UserService;
 import com.QuanLyThuVien.view.bill.ManageBillsFrame;
 import com.QuanLyThuVien.view.book.ManageBooksFrame;
 import com.QuanLyThuVien.view.category.ManageCategoryFrame;
 import com.QuanLyThuVien.view.reader.ManageReadersFrame;
 import com.QuanLyThuVien.view.user.ManageUsersFrame;
+import java.util.List;
 
 
 public class Dashboard extends javax.swing.JFrame {
@@ -13,6 +18,22 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         setLocationRelativeTo(null);
+        BookService bookService = new BookService();
+        List<Book> books = bookService.getAllBook();
+        int stt_book = 0;
+        for(Book i : books){
+            stt_book++;
+        }
+        
+        jlb_book.setText(String.valueOf(stt_book));
+        UserService userService = new UserService();
+        List<User> users = userService.getAllUser();
+        int stt_user = 0;
+        for(User i : users){
+            stt_user++;
+        }
+        jlb_user.setText(String.valueOf(stt_user));
+        
     }
      
     @SuppressWarnings("unchecked")
@@ -59,19 +80,19 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel43 = new javax.swing.JPanel();
         jlbthoat = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jlb_book = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jlb_user = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        jlb_bookBorrowed = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
+        jlb_sachQuaHan = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -387,10 +408,10 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(153, 255, 153));
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel3.setText("10");
-        jPanel13.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jlb_book.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
+        jlb_book.setForeground(new java.awt.Color(0, 153, 204));
+        jlb_book.setText("10");
+        jPanel13.add(jlb_book, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel20.setText("SỐ ĐẦU SÁCH");
@@ -401,10 +422,10 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel10.setText("10");
-        jPanel14.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jlb_user.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
+        jlb_user.setForeground(new java.awt.Color(0, 153, 204));
+        jlb_user.setText("10");
+        jPanel14.add(jlb_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jPanel18.setBackground(new java.awt.Color(153, 255, 153));
         jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -429,10 +450,10 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(204, 255, 255));
         jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel13.setText("10");
-        jPanel16.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jlb_bookBorrowed.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
+        jlb_bookBorrowed.setForeground(new java.awt.Color(0, 153, 204));
+        jlb_bookBorrowed.setText("10");
+        jPanel16.add(jlb_bookBorrowed, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel19.setText("SÁCH ĐANG MƯỢN");
@@ -443,10 +464,10 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(204, 204, 204));
         jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel15.setText("10");
-        jPanel17.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jlb_sachQuaHan.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
+        jlb_sachQuaHan.setForeground(new java.awt.Color(0, 153, 204));
+        jlb_sachQuaHan.setText("10");
+        jPanel17.add(jlb_sachQuaHan, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setText("MƯỢN QUÁ HẠN");
@@ -642,17 +663,13 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_logout;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -694,6 +711,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel jlb_book;
+    private javax.swing.JLabel jlb_bookBorrowed;
+    private javax.swing.JLabel jlb_sachQuaHan;
+    private javax.swing.JLabel jlb_user;
     private javax.swing.JLabel jlbexit;
     private javax.swing.JLabel jlbmuontra;
     private javax.swing.JLabel jlbmuontrasach;

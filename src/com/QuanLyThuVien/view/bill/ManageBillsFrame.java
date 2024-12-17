@@ -2,7 +2,6 @@
 package com.QuanLyThuVien.view.bill;
 
 import com.QuanLyThuVien.model.Bill;
-import com.QuanLyThuVien.view.book.*;
 import com.QuanLyThuVien.model.User;
 import com.QuanLyThuVien.service.BillService;
 import com.QuanLyThuVien.service.ReaderService;
@@ -22,7 +21,6 @@ public class ManageBillsFrame extends javax.swing.JFrame {
     private ReaderService readerService;    
     public ManageBillsFrame() {
         initComponents();
-
         defaultTableModel = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -43,7 +41,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
         List<Bill> bills = billService.getAllBill();
         
         for(Bill bill : bills){
-            defaultTableModel.addRow(new Object[]{bill.getBill_id(),readerService.getReaderById(bill.getReader_id()).getName(),userService.getUserById(bill.getUser_id()).getName(),bill.getDate(),bill.getDeposit()});
+            defaultTableModel.addRow(new Object[]{bill.getBill_id(),readerService.getReaderById(bill.getReader_id()).getName(),userService.getUserById(bill.getUser_id()).getName(),bill.getDate_muon(),bill.getDeposit()});
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Theo độc giả", "Theo nhân viên", "Theo ngày"}));        
     }
@@ -55,7 +53,6 @@ public class ManageBillsFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         billTable = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
-        btn_thongke = new javax.swing.JButton();
         btn_them = new javax.swing.JButton();
         btn_xoa = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -94,16 +91,6 @@ public class ManageBillsFrame extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 51, 51));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icons8_Books_52px_1.png"))); // NOI18N
         jLabel14.setText(" Manage Bills");
-
-        btn_thongke.setBackground(new java.awt.Color(0, 0, 204));
-        btn_thongke.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btn_thongke.setForeground(new java.awt.Color(255, 255, 255));
-        btn_thongke.setText("Thống kê");
-        btn_thongke.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_thongkeActionPerformed(evt);
-            }
-        });
 
         btn_them.setBackground(new java.awt.Color(51, 255, 0));
         btn_them.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -205,15 +192,9 @@ public class ManageBillsFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btn_thongke, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(txt_search)
@@ -255,8 +236,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
                         .addComponent(btn_xoa, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                         .addComponent(btn_capnhat, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                     .addComponent(btn_them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_thongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_timkiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -320,10 +300,6 @@ public class ManageBillsFrame extends javax.swing.JFrame {
     private void billTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_billTableMouseClicked
 
     }//GEN-LAST:event_billTableMouseClicked
-
-    private void btn_thongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thongkeActionPerformed
-        new StatisticalBookFrame().setVisible(true);
-    }//GEN-LAST:event_btn_thongkeActionPerformed
     // sửa
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
         int row = billTable.getSelectedRow();
@@ -366,7 +342,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
         }
             
         for(Bill bill : bills){
-            defaultTableModel.addRow(new Object[]{bill.getBill_id(),readerService.getReaderById(bill.getReader_id()).getName(),userService.getUserById(bill.getUser_id()).getName(),bill.getDate(),bill.getDeposit()});
+            defaultTableModel.addRow(new Object[]{bill.getBill_id(),readerService.getReaderById(bill.getReader_id()).getName(),userService.getUserById(bill.getUser_id()).getName(),bill.getDate_muon(),bill.getDeposit()});
         }
         
     }//GEN-LAST:event_btn_timkiemActionPerformed
@@ -380,7 +356,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
         List<Bill> bills = billService.getAllBill();
         
         for(Bill bill : bills){
-            defaultTableModel.addRow(new Object[]{bill.getBill_id(),readerService.getReaderById(bill.getReader_id()).getName(),userService.getUserById(bill.getUser_id()).getName(),bill.getDate(),bill.getDeposit()});
+            defaultTableModel.addRow(new Object[]{bill.getBill_id(),readerService.getReaderById(bill.getReader_id()).getName(),userService.getUserById(bill.getUser_id()).getName(),bill.getDate_muon(),bill.getDeposit()});
         }
     }//GEN-LAST:event_btn_capnhatActionPerformed
 
@@ -397,7 +373,6 @@ public class ManageBillsFrame extends javax.swing.JFrame {
     private javax.swing.JButton btn_capnhat;
     private javax.swing.JButton btn_sua;
     private javax.swing.JButton btn_them;
-    private javax.swing.JButton btn_thongke;
     private javax.swing.JButton btn_timkiem;
     private javax.swing.JButton btn_xoa;
     private javax.swing.JComboBox<String> jComboBox1;

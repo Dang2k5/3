@@ -5,8 +5,6 @@ package com.QuanLyThuVien.view.user;
 import com.QuanLyThuVien.model.User;
 import com.QuanLyThuVien.service.UserService;
 import com.QuanLyThuVien.view.Dashboard;
-import com.QuanLyThuVien.view.book.AddBookFrame;
-import com.QuanLyThuVien.view.book.StatisticalBookFrame;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -248,7 +246,7 @@ public class ManageUsersFrame extends javax.swing.JFrame {
     
    // thêm
     private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserButtonActionPerformed
-        new AddBookFrame().setVisible(true);
+        new AddUserFrame().setVisible(true);
         
     }//GEN-LAST:event_addUserButtonActionPerformed
     // xóa 
@@ -256,13 +254,13 @@ public class ManageUsersFrame extends javax.swing.JFrame {
         int selectedRow = userTable.getSelectedRow();
         int selectedUserId = (int) userTable.getModel().getValueAt(selectedRow, 0);
         User selectedUser = userService.getUserById(selectedUserId);
-        if(selectedUser.getLeve() != 1){
-            System.out.print(selectedUserId);
+        if(selectedUser.getLeve() != 0){
+            System.out.print(selectedUserId);         
             try {
                 userService.deleteUser(selectedUserId);
             } catch (SQLException ex) {
-                Logger.getLogger(UserJPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Logger.getLogger(ManageUsersFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }        
             JOptionPane.showMessageDialog(this, "Xóa thành công!");
         }else{
             JOptionPane.showMessageDialog(this, "Không thể xóa quản trị viên!");
@@ -305,10 +303,10 @@ public class ManageUsersFrame extends javax.swing.JFrame {
         String tinhTrang;
         for(User user : users){
             if(user.getLeve() == 1){
-                chucVu = "Quản trị viên";
+                chucVu = "Thủ thư";
             }
             else{
-                chucVu = "Nhân viên";
+                chucVu = "Độc giả";
             }
             if(user.getFlag() == 0){
                 tinhTrang = "Bị khóa!";
@@ -334,7 +332,28 @@ public class ManageUsersFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_capnhat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhat1ActionPerformed
-        // TODO add your handling code here:
+        defaultTableModel.setRowCount(0);
+        List<User> users = userService.getAllUser();
+        String chucVu;
+        String tinhTrang;
+        for(User user : users){
+            if(user.getLeve() == 0){
+                chucVu = "Quản trị viên";
+            }
+            else if(user.getLeve() == 1){
+                chucVu = "Thủ thư";
+            }
+            else{
+                chucVu = "Độc giả";
+            }
+            if(user.getFlag() == 0){
+                tinhTrang = "Bị khóa!";
+            }
+            else{
+                tinhTrang = "Hoạt động";
+            }
+            defaultTableModel.addRow(new Object[]{user.getUser_id(), user.getName(), user.getUsername(), user.getPhone(), chucVu, tinhTrang});
+        }
     }//GEN-LAST:event_btn_capnhat1ActionPerformed
 
     public static void main(String args[]) {

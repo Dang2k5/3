@@ -16,24 +16,19 @@ import net.proteanit.sql.DbUtils;
 
 public class BillDao {
     public List<Bill> getAllBill(){
-        List<Bill> bills = new ArrayList<Bill>();
-        
-        Connection connection = DBConnect.getJDBCConnection();
-        
-        String sql = "SELECT * FROM Bill";    
-       
+        List<Bill> bills = new ArrayList<Bill>();       
+        Connection connection = DBConnect.getJDBCConnection();       
+        String sql = "SELECT * FROM Bill";          
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            
-            ResultSet rs = preparedStatement.executeQuery();
-            
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);           
+            ResultSet rs = preparedStatement.executeQuery();            
             while(rs.next()){
                 Bill bill = new Bill();
                 bill.setBill_id(rs.getInt("Bill_id"));
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
-                bill.setDate(rs.getString("Date"));
-                bill.setDate(rs.getString("Date_hen"));
+                bill.setDate_muon(rs.getString("Date_muon"));
+                bill.setDate_hen(rs.getString("Date_hen"));
                 bill.setDeposit(rs.getString("Deposit"));
                 bills.add(bill);
             }
@@ -45,14 +40,14 @@ public class BillDao {
     
     public void addBill(Bill bill){
        Connection connection = DBConnect.getJDBCConnection();
-       String sql = "INSERT INTO Bill(Reader_id, Users_id, Deposit, Date, Date_hen) VALUES (?,?,?,?,?)";
+       String sql = "INSERT INTO Bill(Reader_id, Users_id, Date_muon, Date_hen, Deposit) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, bill.getReader_id());
             preparedStatement.setInt(2, bill.getUser_id());
-            preparedStatement.setString(3, bill.getDeposit());
-            preparedStatement.setString(4, bill.getDate());
-            preparedStatement.setString(5, bill.getDate_hen());
+            preparedStatement.setString(3, bill.getDate_muon());
+            preparedStatement.setString(4, bill.getDate_hen());
+            preparedStatement.setString(5, bill.getDeposit());
             int rs = preparedStatement.executeUpdate();
             
         } catch (SQLException ex) {
@@ -109,7 +104,7 @@ public class BillDao {
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setDeposit(rs.getString("Deposit"));
                 bill.setDate_hen(rs.getString("Date_hen"));
-                bill.setDate(rs.getString("Date"));
+                bill.setDate_muon(rs.getString("Date_muon"));
                 return bill;
             }
         } catch (SQLException ex) {
@@ -141,7 +136,7 @@ public class BillDao {
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
                 bill.setDeposit(rs.getString("Deposit"));
-                bill.setDate(rs.getString("Date"));
+                bill.setDate_muon(rs.getString("Date_muon"));
                 bill.setDate_hen(rs.getString("Date_hen"));
                 bills.add(bill);
             }
@@ -174,7 +169,7 @@ public class BillDao {
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
                 bill.setDeposit(rs.getString("Deposit"));
-                bill.setDate(rs.getString("Date"));
+                bill.setDate_muon(rs.getString("Date_muon"));
                 bill.setDate_hen(rs.getString("Date_hen"));
                 bills.add(bill);
             }
@@ -189,7 +184,7 @@ public class BillDao {
         
         Connection connection = DBConnect.getJDBCConnection();
         
-        String sql = "SELECT * FROM Bill WHERE Date LIKE ?";    
+        String sql = "SELECT * FROM Bill WHERE Date_muon LIKE ?";    
         
         StringBuffer stringBufferTile = new StringBuffer();
         stringBufferTile.append("%");
@@ -207,7 +202,7 @@ public class BillDao {
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
                 bill.setDeposit(rs.getString("Deposit"));
-                bill.setDate(rs.getString("Date"));
+                bill.setDate_muon(rs.getString("Date_muon"));
                 bill.setDate_hen(rs.getString("Date_hen"));
                 bills.add(bill);
             }
@@ -222,7 +217,7 @@ public class BillDao {
         JTable table = new JTable();
         Connection connection = DBConnect.getJDBCConnection();
         
-        String sql = "SELECT Date, COUNT(Date) FROM Bill GROUP BY Date";    
+        String sql = "SELECT Date_muon, COUNT(Date_muon) FROM Bill GROUP BY Date";    
        
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -240,7 +235,7 @@ public class BillDao {
          
         Connection connection = DBConnect.getJDBCConnection();
         
-        String sql = "SELECT * FROM Bill INNER JOIN Bill_Detail ON Bill.Bill_id = Bill_Detail.Bill_id WHERE Date = ? ORDER BY Date DESC";    
+        String sql = "SELECT * FROM Bill INNER JOIN Bill_Detail ON Bill.Bill_id = Bill_Detail.Bill_id WHERE Date_muon = ? ORDER BY Date_muon DESC";    
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, date);
