@@ -164,7 +164,7 @@ public class AddBookFrame extends javax.swing.JFrame {
         book.setTitle(txt_title.getText());
         book.setAuthor(txt_author.getText());
         book.setIntroduce(txt_Introduce.getText());
-        int amountBook = Integer.valueOf(String.valueOf(txt_amount.getText()));
+        int amountBook = Integer.parseInt(String.valueOf(txt_amount.getText()));
         book.setAmount(amountBook);
         String categoryItem = String.valueOf(jComboBox_category.getSelectedItem());
         int category_id = categoryService.getCategoryIdByValue(categoryItem);

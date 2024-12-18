@@ -43,9 +43,9 @@ public class AddBillFrame extends javax.swing.JFrame {
         
         int i=0;
         int length = 0;
-        StringBuffer tmp = new StringBuffer();
+        StringBuilder tmp = new StringBuilder();
         for(Reader item : readersList){
-            tmp.append(String.valueOf(item.getReader_id()) +" - "+ readerService.getReaderById(item.getReader_id()).getName());
+            tmp.append(String.valueOf(item.getReader_id())).append(" - ").append(readerService.getReaderById(item.getReader_id()).getName());
             arrReader[i] = tmp.toString();
             i++;
             length = tmp.length();
@@ -58,9 +58,9 @@ public class AddBillFrame extends javax.swing.JFrame {
         
         int j=0;
         int length2 = 0;
-        StringBuffer tmp2 = new StringBuffer();
+        StringBuilder tmp2 = new StringBuilder();
         for(Book item : booksList){
-            tmp2.append(String.valueOf(item.getBook_id()) +" - "+ item.getTitle());
+            tmp2.append(String.valueOf(item.getBook_id())).append(" - ").append(item.getTitle());
             arrBook[j] = tmp2.toString();
             j++;
             length2 = tmp2.length();
@@ -158,6 +158,12 @@ public class AddBillFrame extends javax.swing.JFrame {
                         .addComponent(jLabel7)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
+
+        bookIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookIdTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Mã sách");
@@ -357,13 +363,11 @@ public class AddBillFrame extends javax.swing.JFrame {
         
         billModel.setDate_muon(dateTextField.getText());
         billModel.setDate_hen(dateHenTextField.getText());
-        billModel.setDeposit(depositTextField.getText());
+        billModel.setDeposit(Integer.parseInt(depositTextField.getText()));
         
         UserService userService = new UserService();
         billModel.setUser_id(userService.getCurrentUserid());
-        
-       // billModel.setReader_id(Integer.valueOf(String.valueOf(readerJComboBox.getSelectedItem())));
-        
+              
         StringTokenizer readerToken = new StringTokenizer(String.valueOf(readerJComboBox.getSelectedItem()));
         
         billModel.setReader_id(Integer.parseInt(readerToken.nextToken()));
@@ -398,6 +402,10 @@ public class AddBillFrame extends javax.swing.JFrame {
 
         bookIdTextField.setText(listIdBook.toString());
     }//GEN-LAST:event_chooseBookButtonActionPerformed
+
+    private void bookIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookIdTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bookIdTextFieldActionPerformed
 
     
     public static void main(String args[]) {

@@ -47,7 +47,7 @@ public class BillDetailDao {
             while(rs.next()){
                 BillDetail billdt = new BillDetail();
                 billdt.setBill_detail_id(rs.getInt("Bill_detail_id"));
-                billdt.setBill_id(billId);
+                billdt.setBill_id(rs.getInt("Bill_id"));
                 billdt.setBook_id(rs.getInt("Book_id"));
                 billdt.setDate_pay(rs.getString("Date_pay"));
                 billdt.setFined(rs.getString("Fined"));

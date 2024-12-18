@@ -12,7 +12,12 @@ public class CategoryService {
     public CategoryService() {
         catetgoryDao = new CategoryDao();
     }
-    
+    public void addCategory(Category category){
+        catetgoryDao.addCategory(category);
+    }
+    public void deleteCategory(int category_id){
+        catetgoryDao.deleteCategory(category_id);
+    }
     public List<Category> getAllCategory(){
         return catetgoryDao.getAllCategory();
     }

@@ -1,17 +1,37 @@
 
 package com.QuanLyThuVien.view;
 
+import com.QuanLyThuVien.model.Book;
+import com.QuanLyThuVien.model.User;
+import com.QuanLyThuVien.service.BookService;
+import com.QuanLyThuVien.service.UserService;
 import com.QuanLyThuVien.view.bill.ManageBillsFrame;
 import com.QuanLyThuVien.view.book.ManageBooksFrame;
 import com.QuanLyThuVien.view.category.ManageCategoryFrame;
 import com.QuanLyThuVien.view.reader.ManageReadersFrame;
 import com.QuanLyThuVien.view.user.ManageUsersFrame;
+import java.util.List;
 
 
 public class ReaderFrame extends javax.swing.JFrame {
     public ReaderFrame() {
         initComponents();
         setLocationRelativeTo(null);
+        BookService bookService = new BookService();
+        List<Book> books = bookService.getAllBook();
+        int stt_book = 0;
+        for(Book i : books){
+            stt_book++;
+        }
+        
+        jlb_book.setText(String.valueOf(stt_book));
+        UserService userService = new UserService();
+        List<User> users = userService.getAllUser();
+        int stt_user = 0;
+        for(User i : users){
+            stt_user++;
+        }
+        jlb_user.setText(String.valueOf(stt_user));
     }
      
     @SuppressWarnings("unchecked")
@@ -50,12 +70,11 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel41 = new javax.swing.JPanel();
         jPanel42 = new javax.swing.JPanel();
         jPanel43 = new javax.swing.JPanel();
-        jlbthoat = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jlb_book = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jlb_user = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -249,18 +268,6 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel43.setBackground(new java.awt.Color(153, 153, 254));
         jPanel43.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlbthoat.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jlbthoat.setForeground(new java.awt.Color(255, 255, 255));
-        jlbthoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icon_menu0_white_24dp.png"))); // NOI18N
-        jlbthoat.setText("ĐỔI MẬT KHẨU");
-        jlbthoat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlbthoatMouseClicked(evt);
-            }
-        });
-        jPanel43.add(jlbthoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 250, 60));
-
         jPanel42.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         jPanel41.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -303,7 +310,7 @@ public class ReaderFrame extends javax.swing.JFrame {
                 .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89)
                 .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 610));
@@ -311,10 +318,10 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(153, 255, 153));
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel3.setText("10");
-        jPanel13.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jlb_book.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
+        jlb_book.setForeground(new java.awt.Color(0, 153, 204));
+        jlb_book.setText("10");
+        jPanel13.add(jlb_book, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel20.setText("SỐ ĐẦU SÁCH");
@@ -325,10 +332,10 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel10.setText("10");
-        jPanel14.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jlb_user.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
+        jlb_user.setForeground(new java.awt.Color(0, 153, 204));
+        jlb_user.setText("10");
+        jPanel14.add(jlb_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jPanel18.setBackground(new java.awt.Color(153, 255, 153));
         jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -476,14 +483,6 @@ public class ReaderFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MouseClicked
 
-    private void jlbthoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbthoatMouseClicked
-        ChangePasswordFrame cpf = new ChangePasswordFrame();
-        cpf.setVisible(true);
-        cpf.pack();
-        cpf.setLocationRelativeTo(null);
-        cpf.setResizable(false);       
-    }//GEN-LAST:event_jlbthoatMouseClicked
-
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         LoginFrame loginFrame = new LoginFrame();
         loginFrame.setVisible(true);
@@ -526,7 +525,6 @@ public class ReaderFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_logout;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -536,7 +534,6 @@ public class ReaderFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -575,9 +572,10 @@ public class ReaderFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel jlb_book;
+    private javax.swing.JLabel jlb_user;
     private javax.swing.JLabel jlbexit;
     private javax.swing.JLabel jlbmuontra;
     private javax.swing.JLabel jlbmuontrasach;
-    private javax.swing.JLabel jlbthoat;
     // End of variables declaration//GEN-END:variables
 }

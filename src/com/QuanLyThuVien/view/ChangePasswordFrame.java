@@ -2,10 +2,13 @@
 package com.QuanLyThuVien.view;
 
 import com.QuanLyThuVien.model.User;
+import com.QuanLyThuVien.service.UserService;
+import javax.swing.JOptionPane;
 
 public class ChangePasswordFrame extends javax.swing.JFrame {
 
-    
+    UserService userService = new UserService();
+    User user = new User();
     public ChangePasswordFrame() {
         initComponents();
     }
@@ -111,9 +114,20 @@ public class ChangePasswordFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_returnActionPerformed
 
     private void btn_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeActionPerformed
-        User user = new User();
-        if(txt_passNewer == txt_passConfirmed){
-            user.setPassword(txt_passNewer.getText());
+        if(!txt_passNewer.getText().equals(txt_passConfirmed.getText())){
+            JOptionPane.showMessageDialog(this, "Mật khẩu mới và xác nhận mật khẩu không khớp", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        // Thực hiện thay đổi mật khẩu
+        boolean passwordChanged = userService.ChangePassword(user.getUsername(), txt_passNewer.getText());
+        System.out.println(passwordChanged);
+        if (passwordChanged) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu đã được cập nhật", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            // Chuyển đến màn hình đăng nhập mới và đóng cửa sổ hiện tại
+            new LoginFrame().setVisible(true);
+            this.dispose(); // Đóng cửa sổ hiện tại
+        } else {
+            JOptionPane.showMessageDialog(this, "Mật khẩu cũ không đúng. Vui lòng thử lại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_changeActionPerformed
 

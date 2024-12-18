@@ -41,7 +41,6 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jlb_back = new javax.swing.JLabel();
-        bookButton = new javax.swing.JButton();
         addressButton = new javax.swing.JButton();
         nameButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,16 +79,6 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bookButton.setBackground(new java.awt.Color(0, 153, 0));
-        bookButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        bookButton.setForeground(new java.awt.Color(255, 255, 255));
-        bookButton.setText("Theo sách");
-        bookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookButtonActionPerformed(evt);
-            }
-        });
-
         addressButton.setBackground(new java.awt.Color(0, 153, 0));
         addressButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         addressButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,21 +116,17 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(bookButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nameButton)
-                        .addGap(65, 65, 65)
-                        .addComponent(addressButton)
-                        .addGap(82, 82, 82)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(nameButton)
+                .addGap(94, 94, 94)
+                .addComponent(addressButton)
+                .addGap(68, 68, 68)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +134,6 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addressButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -167,7 +151,7 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlb_typeStatis, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(584, Short.MAX_VALUE))
+                .addContainerGap(495, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +165,11 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(110, 110, 110))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,30 +186,6 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
     private void jlb_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_backMouseClicked
         this.dispose();
     }//GEN-LAST:event_jlb_backMouseClicked
-
-    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
-        defaultTableModel = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Không cho phép người dùng sửa dữ liệu
-            }
-        };
-        statiJTable.setModel(defaultTableModel);
-        defaultTableModel.addColumn("STT");
-        defaultTableModel.addColumn("Mã Độc Giả");
-        defaultTableModel.addColumn("Họ Và Tên");
-        defaultTableModel.addColumn("Số Lượng Sách Mượn");
-
-        JTable table = new JTable();
-        String[][] arrStatis = new String[table.getRowCount()][table.getColumnCount()];
-        table = readerService.StatisReaderByBook();
-
-        for (int row = 0; row < table.getRowCount(); row++) {
-            int readerId = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
-            defaultTableModel.addRow(new Object[]{row+1, table.getValueAt(row, 0),readerService.getReaderById(readerId).getName(),table.getValueAt(row,1)});
-        }
-        jlb_typeStatis.setText("Số Lượng Sách Mượn");
-    }//GEN-LAST:event_bookButtonActionPerformed
 
     private void addressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressButtonActionPerformed
         defaultTableModel = new DefaultTableModel() {
@@ -257,7 +217,7 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
         };
         statiJTable.setModel(defaultTableModel);
         defaultTableModel.addColumn("STT");
-        defaultTableModel.addColumn("Địa chỉ");
+        defaultTableModel.addColumn("Họ và tên");
         defaultTableModel.addColumn("Số Lượng");    
         JTable table = new JTable();
         table = readerService.StatisReaderByName();        
@@ -277,7 +237,6 @@ public class StatisticalReaderFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addressButton;
-    private javax.swing.JButton bookButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

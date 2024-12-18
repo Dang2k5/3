@@ -5,7 +5,7 @@ public class Bill {
     private int bill_id;
     private int reader_id;
     private int user_id;
-    private String deposit;
+    private int deposit;
     private String date_muon;
     private String date_hen;
 
@@ -41,11 +41,11 @@ public class Bill {
         this.user_id = user_id;
     }
 
-    public String getDeposit() {
+    public int getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(String deposit) {
+    public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
 

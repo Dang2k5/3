@@ -20,7 +20,6 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
     DefaultTableModel defaultTableModel;
     private BillService billService;
     private Bill billModel;
-    private User userModel;
     private UserService userService;
     private ReaderService readerService;
     private BillDetailService billDetailService;
@@ -45,7 +44,7 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         nameUserLabel.setText(userService.getUserById(billModel.getUser_id()).getName());
         ngayMuonLabel.setText(billModel.getDate_muon());
         ngayHenTraLabel.setText(billModel.getDate_hen());
-        depositLabel.setText(billModel.getDeposit());
+        depositLabel.setText(String.valueOf(billModel.getDeposit()));
         defaultTableModel = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -62,24 +61,22 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         defaultTableModel.addColumn("Ngày trả");
         defaultTableModel.addColumn("Tiền phạt");
         
-        List<BillDetail> billDetals = billDetailService.getAllBillDetail(billId);
-        
-        int stt =1;
+        List<BillDetail> billdetails = billDetailService.getAllBillDetail(billId);
+        int stt = 1;
         String ngayTra = "";
-        int countTienPhat = 0;
+        int tongTienPhat = 0;
         StringBuffer tienPhat = new StringBuffer();
-        for(BillDetail item : billDetals){
-            if(item.getDate_pay() == null){
-                ngayTra = "Chưa trả";
+        for(BillDetail i : billdetails){
+            if(i.getDate_pay() == null){
+                ngayTra = "Chua Tra";
+            }else{
+                ngayTra = i.getDate_pay();
             }
-            else{
-                ngayTra = item.getDate_pay();
-            }
-            defaultTableModel.addRow(new Object[]{stt,item.getBook_id(),bookService.getBookById(item.getBook_id()).getTitle(),bookService.getBookById(item.getBook_id()).getAuthor(),categoryService.getCategoryById(bookService.getBookById(item.getBook_id()).getCategory_id()),ngayTra,item.getFined()});
+            defaultTableModel.addRow(new Object[]{stt, i.getBook_id(), bookService.getBookById(i.getBook_id()).getTitle(),bookService.getBookById(i.getBook_id()).getAuthor(),categoryService.getCategoryById(bookService.getBookById(i.getBook_id()).getCategory_id()),ngayTra,i.getFined()});
             stt++;
-            countTienPhat += Integer.valueOf(item.getFined());
+            tongTienPhat += Integer.valueOf(i.getFined());
         }
-        tienPhat.append(countTienPhat);
+        tienPhat.append(tongTienPhat);
         tienPhat.append(" VNĐ");
         finedLabel.setText(tienPhat.toString());
     }
@@ -117,7 +114,7 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         bookTable = new javax.swing.JTable();
-        updateBookButton = new javax.swing.JButton();
+        returnBookButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,19 +139,19 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         jLabel6.setText("Tên nhân viên :");
 
         idBillLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        idBillLabel.setText("1002");
+        idBillLabel.setText("001");
 
         idReaderLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        idReaderLabel.setText("1002");
+        idReaderLabel.setText("1");
 
         idUserLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        idUserLabel.setText("1002");
+        idUserLabel.setText("1");
 
         nameReaderLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        nameReaderLabel.setText("Lê Duy Anh");
+        nameReaderLabel.setText("Đào Đăng");
 
         nameUserLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        nameUserLabel.setText("Nguyễn Thị Ngân");
+        nameUserLabel.setText("Đào Đăng");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -216,16 +213,16 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         finedLabel.setText("10000");
 
         depositLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        depositLabel.setText("Lê Duy Anh");
+        depositLabel.setText("50000");
 
         ngayTraLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ngayTraLabel.setText("10/3/2019");
+        ngayTraLabel.setText("30/12/2024");
 
         ngayHenTraLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ngayHenTraLabel.setText("1002");
+        ngayHenTraLabel.setText("20/12/2024");
 
         ngayMuonLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        ngayMuonLabel.setText("1002");
+        ngayMuonLabel.setText("16/12/2024");
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel17.setText("Ngày mượn    :");
@@ -316,20 +313,16 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 285, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 448, Short.MAX_VALUE)
+                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,10 +331,11 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
                     .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel5.setForeground(new java.awt.Color(0, 0, 204));
@@ -359,13 +353,13 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(bookTable);
 
-        updateBookButton.setBackground(new java.awt.Color(0, 153, 51));
-        updateBookButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        updateBookButton.setForeground(new java.awt.Color(255, 255, 255));
-        updateBookButton.setText("Trả Sách");
-        updateBookButton.addActionListener(new java.awt.event.ActionListener() {
+        returnBookButton.setBackground(new java.awt.Color(0, 153, 51));
+        returnBookButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        returnBookButton.setForeground(new java.awt.Color(255, 255, 255));
+        returnBookButton.setText("Trả Sách");
+        returnBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookButtonActionPerformed(evt);
+                returnBookButtonActionPerformed(evt);
             }
         });
 
@@ -379,14 +373,14 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(returnBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(returnBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                 .addContainerGap())
@@ -420,18 +414,8 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void updateBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookButtonActionPerformed
-        caculatorFined = new CaculatorFined();
-
-        int row = bookTable.getSelectedRow();
-
-        int billDetailId = Integer.valueOf(String.valueOf(bookTable.getValueAt(row, 1)));
-
-        int fined = caculatorFined.Caulator(billModel.getDate_hen());
-        System.out.println(billDetailId +"  "+fined);
-        billDetailService.update(billDetailId, fined);
-
-        defaultTableModel = new DefaultTableModel(){
+    private void returnBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBookButtonActionPerformed
+         defaultTableModel = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // Không cho phép người dùng sửa dữ liệu
@@ -446,13 +430,24 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         defaultTableModel.addColumn("Thể loại");
         defaultTableModel.addColumn("Ngày trả");
         defaultTableModel.addColumn("Tiền phạt");
+        caculatorFined = new CaculatorFined();
+
+        int row = bookTable.getSelectedRow();
+
+        int billDetailId = Integer.parseInt(String.valueOf(bookTable.getValueAt(row, 1)));
+
+        int fined = caculatorFined.Caculator(billModel.getDate_hen());
+        System.out.println(billDetailId +"  "+fined);
+        billDetailService.update(billDetailId, fined);
+
+       
 
         List<BillDetail> billDetals = billDetailService.getAllBillDetail(billModel.getBill_id());
 
         int stt =1;
         String ngayTra = "";
         int countTienPhat = 0;
-        StringBuffer tienPhat = new StringBuffer();
+        StringBuilder tienPhat = new StringBuilder();
         for(BillDetail item : billDetals){
             if(item.getDate_pay() == null){
                 ngayTra = "Chưa trả";
@@ -467,11 +462,26 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         tienPhat.append(countTienPhat);
         tienPhat.append(" VNĐ");
         finedLabel.setText(tienPhat.toString());
-    }//GEN-LAST:event_updateBookButtonActionPerformed
+    }//GEN-LAST:event_returnBookButtonActionPerformed
 
     
     public static void main(String args[]) {
-        
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ShowBillDetailFrame(19).setVisible(true);
@@ -508,6 +518,6 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
     private javax.swing.JLabel ngayHenTraLabel;
     private javax.swing.JLabel ngayMuonLabel;
     private javax.swing.JLabel ngayTraLabel;
-    private javax.swing.JButton updateBookButton;
+    private javax.swing.JButton returnBookButton;
     // End of variables declaration//GEN-END:variables
 }

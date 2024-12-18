@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 public class CaculatorFined {
     
-    public int Caulator(String ngayHen){
+    public int Caculator(String ngayHen){
         int arrNgayHen[];
         int arrNgayTra[];
         int countDate=0;

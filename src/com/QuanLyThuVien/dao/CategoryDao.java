@@ -12,6 +12,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CategoryDao {
+    public void addCategory(Category category){
+        Connection connection = DBConnect.getJDBCConnection();
+        String sql = "INSERT INTO Category(Category_name) VALUES (?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, category.getCategory_name());
+            int rs = preparedStatement.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void deleteCategory(int Category_id){
+        Connection connection = DBConnect.getJDBCConnection();
+        
+        String sql = "DELETE Category WHERE Category_id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, Category_id);
+            int rs = preparedStatement.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public List<Category> getAllCategory(){
         List<Category> categories = new ArrayList<Category>();
        

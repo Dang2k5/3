@@ -29,7 +29,7 @@ public class BillDao {
                 bill.setUser_id(rs.getInt("Users_id"));
                 bill.setDate_muon(rs.getString("Date_muon"));
                 bill.setDate_hen(rs.getString("Date_hen"));
-                bill.setDeposit(rs.getString("Deposit"));
+                bill.setDeposit(rs.getInt("Deposit"));
                 bills.add(bill);
             }
         } catch (SQLException ex) {
@@ -47,9 +47,8 @@ public class BillDao {
             preparedStatement.setInt(2, bill.getUser_id());
             preparedStatement.setString(3, bill.getDate_muon());
             preparedStatement.setString(4, bill.getDate_hen());
-            preparedStatement.setString(5, bill.getDeposit());
+            preparedStatement.setInt(5, bill.getDeposit());
             int rs = preparedStatement.executeUpdate();
-            
         } catch (SQLException ex) {
             Logger.getLogger(BillDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -96,15 +95,15 @@ public class BillDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, bill_id);
             ResultSet rs = preparedStatement.executeQuery();
-            
+
             while(rs.next()){
                 Bill bill = new Bill();
-                bill.setBill_id(rs.getInt("Bll_id"));
+                bill.setBill_id(rs.getInt("Bill_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
-                bill.setReader_id(rs.getInt("Reader_id"));
-                bill.setDeposit(rs.getString("Deposit"));
+                bill.setReader_id(rs.getInt("Reader_id"));               
                 bill.setDate_hen(rs.getString("Date_hen"));
                 bill.setDate_muon(rs.getString("Date_muon"));
+                bill.setDeposit(rs.getInt("Deposit"));
                 return bill;
             }
         } catch (SQLException ex) {
@@ -135,7 +134,7 @@ public class BillDao {
                 bill.setBill_id(rs.getInt("Bill_id"));
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
-                bill.setDeposit(rs.getString("Deposit"));
+                bill.setDeposit(rs.getInt("Deposit"));
                 bill.setDate_muon(rs.getString("Date_muon"));
                 bill.setDate_hen(rs.getString("Date_hen"));
                 bills.add(bill);
@@ -168,7 +167,7 @@ public class BillDao {
                 bill.setBill_id(rs.getInt("Bill_id"));
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
-                bill.setDeposit(rs.getString("Deposit"));
+                bill.setDeposit(rs.getInt("Deposit"));
                 bill.setDate_muon(rs.getString("Date_muon"));
                 bill.setDate_hen(rs.getString("Date_hen"));
                 bills.add(bill);
@@ -201,7 +200,7 @@ public class BillDao {
                 bill.setBill_id(rs.getInt("Bill_id"));
                 bill.setReader_id(rs.getInt("Reader_id"));
                 bill.setUser_id(rs.getInt("Users_id"));
-                bill.setDeposit(rs.getString("Deposit"));
+                bill.setDeposit(rs.getInt("Deposit"));
                 bill.setDate_muon(rs.getString("Date_muon"));
                 bill.setDate_hen(rs.getString("Date_hen"));
                 bills.add(bill);
