@@ -204,7 +204,7 @@ public class LoginFrame extends javax.swing.JFrame {
         }
         if (roleIndex == 0 && user.getUsername().equals("admin")) { // Quản trị viên
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công.");
-            Dashboard testDashboard = new Dashboard();
+            AdminFrame testDashboard = new AdminFrame();
             testDashboard.setVisible(true);
             testDashboard.pack();
             testDashboard.setLocationRelativeTo(null);

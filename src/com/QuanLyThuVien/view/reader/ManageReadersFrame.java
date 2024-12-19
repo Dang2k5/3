@@ -4,7 +4,7 @@ package com.QuanLyThuVien.view.reader;
 
 import com.QuanLyThuVien.model.Reader;
 import com.QuanLyThuVien.service.ReaderService;
-import com.QuanLyThuVien.view.Dashboard;
+import com.QuanLyThuVien.view.AdminFrame;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -272,11 +272,6 @@ public class ManageReadersFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jlb_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_backMouseClicked
-        Dashboard db = new Dashboard();
-        db.setVisible(true);
-        db.pack();
-        db.setLocationRelativeTo(null);
-        db.setResizable(false);
         dispose();
     }//GEN-LAST:event_jlb_backMouseClicked
 

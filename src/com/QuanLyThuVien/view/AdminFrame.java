@@ -13,9 +13,9 @@ import com.QuanLyThuVien.view.user.ManageUsersFrame;
 import java.util.List;
 
 
-public class Dashboard extends javax.swing.JFrame {
+public class AdminFrame extends javax.swing.JFrame {
     
-    public Dashboard() {
+    public AdminFrame() {
         initComponents();
         setLocationRelativeTo(null);
         BookService bookService = new BookService();
@@ -553,7 +553,6 @@ public class Dashboard extends javax.swing.JFrame {
         mbf.pack();
         mbf.setLocationRelativeTo(null);
         mbf.setResizable(false);
-        this.dispose();
     }//GEN-LAST:event_jlbqlsachMouseClicked
 
     private void jlbexitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbexitMouseClicked
@@ -582,7 +581,6 @@ public class Dashboard extends javax.swing.JFrame {
        mrf.pack();
        mrf.setLocationRelativeTo(null);
        mrf.setResizable(false);
-       this.dispose();
     }//GEN-LAST:event_jlbqltaikhoanMouseClicked
 
     private void jlbmuontrasachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontrasachMouseClicked
@@ -591,7 +589,6 @@ public class Dashboard extends javax.swing.JFrame {
         mcf.pack();
         mcf.setLocationRelativeTo(null);
         mcf.setResizable(false);
-        this.dispose();
     }//GEN-LAST:event_jlbmuontrasachMouseClicked
 
     private void jlbquanlynhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbquanlynhanvienMouseClicked
@@ -600,7 +597,6 @@ public class Dashboard extends javax.swing.JFrame {
         muf.pack();
         muf.setLocationRelativeTo(null);
         muf.setResizable(false);
-        this.dispose();
     }//GEN-LAST:event_jlbquanlynhanvienMouseClicked
 
     private void jlbmuontraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontraMouseClicked
@@ -609,7 +605,6 @@ public class Dashboard extends javax.swing.JFrame {
         mbf.pack();
         mbf.setLocationRelativeTo(null);
         mbf.setResizable(false);
-        this.dispose();
     }//GEN-LAST:event_jlbmuontraMouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
@@ -642,20 +637,21 @@ public class Dashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new AdminFrame().setVisible(true);
             }
         });
     }

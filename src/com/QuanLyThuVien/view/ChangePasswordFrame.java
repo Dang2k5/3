@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class ChangePasswordFrame extends javax.swing.JFrame {
 
     UserService userService = new UserService();
-    User user = new User();
+    User user;
     public ChangePasswordFrame() {
         initComponents();
     }
@@ -114,6 +114,7 @@ public class ChangePasswordFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_returnActionPerformed
 
     private void btn_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeActionPerformed
+        user = userService.Checkpassword(txt_passOlder.getText());
         if(!txt_passNewer.getText().equals(txt_passConfirmed.getText())){
             JOptionPane.showMessageDialog(this, "Mật khẩu mới và xác nhận mật khẩu không khớp", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
@@ -121,7 +122,7 @@ public class ChangePasswordFrame extends javax.swing.JFrame {
         // Thực hiện thay đổi mật khẩu
         boolean passwordChanged = userService.ChangePassword(user.getUsername(), txt_passNewer.getText());
         System.out.println(passwordChanged);
-        if (passwordChanged) {
+        if (passwordChanged == true) {
             JOptionPane.showMessageDialog(this, "Mật khẩu đã được cập nhật", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             // Chuyển đến màn hình đăng nhập mới và đóng cửa sổ hiện tại
             new LoginFrame().setVisible(true);

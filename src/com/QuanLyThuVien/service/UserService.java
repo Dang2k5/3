@@ -15,7 +15,6 @@ public class UserService {
     public UserService() {
         userDao = new UserDao();
     }
-    
     public User getUserById(int user_id){
         return userDao.getUserById(user_id);
     }
@@ -28,9 +27,9 @@ public class UserService {
         userDao.addUser(user);
     }
     
-//    public Boolean CheckUsername(String username){
-//        return userDao.CheckUsername(username);
-//    }
+    public User Checkpassword(String password){
+        return userDao.CheckPassword(password);
+    }
     public User CheckUsername(String username){
         return userDao.CheckUsername(username);
     }

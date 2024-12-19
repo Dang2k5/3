@@ -4,7 +4,7 @@ package com.QuanLyThuVien.view.user;
 
 import com.QuanLyThuVien.model.User;
 import com.QuanLyThuVien.service.UserService;
-import com.QuanLyThuVien.view.Dashboard;
+import com.QuanLyThuVien.view.AdminFrame;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -323,11 +323,6 @@ public class ManageUsersFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
     // trờ lại
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        Dashboard db = new Dashboard();
-        db.setVisible(true);
-        db.pack();
-        db.setLocationRelativeTo(null);
-        db.setResizable(false);
         dispose();
     }//GEN-LAST:event_btn_backActionPerformed
 

@@ -4,7 +4,7 @@ package com.QuanLyThuVien.view.category;
 import com.QuanLyThuVien.model.Category;
 import com.QuanLyThuVien.model.Reader;
 import com.QuanLyThuVien.service.CategoryService;
-import com.QuanLyThuVien.view.Dashboard;
+import com.QuanLyThuVien.view.AdminFrame;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -153,11 +153,6 @@ public class ManageCategoryFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_xoaActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        Dashboard db = new Dashboard();
-        db.setVisible(true);
-        db.pack();
-        db.setLocationRelativeTo(null);
-        db.setResizable(false);
         dispose();
     }//GEN-LAST:event_btn_backActionPerformed
 

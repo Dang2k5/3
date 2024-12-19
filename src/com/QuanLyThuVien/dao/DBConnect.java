@@ -10,7 +10,7 @@ public class DBConnect {
         
 		try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-01VM4M5\\SQLEXPRESS:1433;databaseName=QuanLyThuVien;encrypt=true;trustServerCertificate=true;";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyThuVien;encrypt=true;trustServerCertificate=true;";
             String user = "sa";
             String password = "123456";
             

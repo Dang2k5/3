@@ -366,8 +366,7 @@ public class AddBillFrame extends javax.swing.JFrame {
         billModel.setDeposit(Integer.parseInt(depositTextField.getText()));
         
         UserService userService = new UserService();
-        billModel.setUser_id(userService.getCurrentUserid());
-              
+        billModel.setUser_id(userService.getCurrentUserid());             
         StringTokenizer readerToken = new StringTokenizer(String.valueOf(readerJComboBox.getSelectedItem()));
         
         billModel.setReader_id(Integer.parseInt(readerToken.nextToken()));

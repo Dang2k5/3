@@ -79,9 +79,8 @@ public class UserDao {
         return ds;
     }
     
-    
-    
-    
+     
+   
     public User getUserById(int user_id){       
         Connection connection = DBConnect.getJDBCConnection();       
         String sql = "SELECT * FROM Users WHERE Users_id = ?";    
@@ -155,6 +154,31 @@ public class UserDao {
         }
         return null;
     }
+    public User CheckPassword(String password){
+        Connection connection = DBConnect.getJDBCConnection();
+        
+        String sql = "SELECT * FROM Users WHERE Password = ?";
+        try{
+        PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, password);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                User user = new User();
+                user.setUser_id(rs.getInt("Users_id"));
+                user.setName(rs.getString("Name"));
+                user.setLeve(rs.getInt("Leve"));
+                user.setPhone(rs.getString("Phone"));
+                user.setUsername(rs.getString("Username"));
+                user.setPassword(rs.getString("Password"));
+                user.setFlag(rs.getInt("Flag"));
+                return user;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     
     public List<User> searchUserFromName(String name){
         List<User> users = new ArrayList<User>();

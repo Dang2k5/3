@@ -5,9 +5,18 @@
         <group>
             <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/dao/BillDao.java</file>
             <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/bill/AddBillFrame.java</file>
-            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/controller/CaculatorFined.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/AdminFrame.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/ReaderFrame.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/category/ManageCategoryFrame.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/bill/ManageBillsFrame.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/book/ManageBooksFrame.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/dao/DBConnect.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/LibrarianFrame.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/book/AddBookFrame.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/service/UserService.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/dao/UserDao.java</file>
+            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/reader/ManageReadersFrame.java</file>
             <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/view/user/ManageUsersFrame.java</file>
-            <file>file:/D:/JavaYT/Nhom23/src/com/QuanLyThuVien/controller/XuLyNgayThang.java</file>
         </group>
     </open-files>
 </project-private>

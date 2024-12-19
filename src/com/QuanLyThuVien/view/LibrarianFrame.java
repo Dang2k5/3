@@ -567,8 +567,7 @@ public class LibrarianFrame extends javax.swing.JFrame {
        mrf.setVisible(true);
        mrf.pack();
        mrf.setLocationRelativeTo(null);
-       mrf.setResizable(false);
-       this.dispose();
+       mrf.setResizable(false);       
     }//GEN-LAST:event_jlbqltaikhoanMouseClicked
 
     private void jlbmuontrasachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontrasachMouseClicked
@@ -598,7 +597,8 @@ public class LibrarianFrame extends javax.swing.JFrame {
         cpf.setVisible(true);
         cpf.pack();
         cpf.setLocationRelativeTo(null);
-        cpf.setResizable(false);       
+        cpf.setResizable(false);
+        this.dispose();
     }//GEN-LAST:event_jlb_doiMKMouseClicked
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed

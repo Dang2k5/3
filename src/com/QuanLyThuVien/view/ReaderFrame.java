@@ -48,12 +48,25 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel25 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
+        jPanel61 = new javax.swing.JPanel();
+        jPanel62 = new javax.swing.JPanel();
+        jPanel63 = new javax.swing.JPanel();
+        jPanel64 = new javax.swing.JPanel();
+        jPanel65 = new javax.swing.JPanel();
+        jPanel66 = new javax.swing.JPanel();
+        jPanel67 = new javax.swing.JPanel();
         jlbmuontra = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jlbmuontrasach = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jlbmuontrasach1 = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        jlbmuontrasach2 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        jlbmuontrasach3 = new javax.swing.JLabel();
+        jlbmuontrasach4 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
@@ -62,6 +75,7 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel33 = new javax.swing.JPanel();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
+        jlb_doiMK = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
@@ -137,6 +151,49 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel27.setBackground(new java.awt.Color(153, 153, 254));
         jPanel27.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel26.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel25.add(jPanel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel24.add(jPanel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel5.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel61.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel61.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel61.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel61MouseClicked(evt);
+            }
+        });
+        jPanel61.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel62.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel62.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel62.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel63.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel63.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel63.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel62.add(jPanel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel61.add(jPanel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel64.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel64.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel64.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel65.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel65.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel65.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel66.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel66.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel66.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel67.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel67.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel67.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlbmuontra.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jlbmuontra.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,15 +204,17 @@ public class ReaderFrame extends javax.swing.JFrame {
                 jlbmuontraMouseClicked(evt);
             }
         });
-        jPanel27.add(jlbmuontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 250, 60));
+        jPanel67.add(jlbmuontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 250, 60));
 
-        jPanel26.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel66.add(jPanel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel25.add(jPanel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel65.add(jPanel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel24.add(jPanel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel64.add(jPanel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel5.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel61.add(jPanel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel5.add(jPanel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(153, 153, 254));
         jPanel7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -177,16 +236,67 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlbmuontrasach.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jlbmuontrasach.setForeground(new java.awt.Color(255, 255, 255));
-        jlbmuontrasach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icon_menu0_white_24dp.png"))); // NOI18N
-        jlbmuontrasach.setText("THỂ LOẠI");
-        jlbmuontrasach.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel12.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbmuontrasach1.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        jlbmuontrasach1.setForeground(new java.awt.Color(255, 255, 255));
+        jlbmuontrasach1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icon_menu0_white_24dp.png"))); // NOI18N
+        jlbmuontrasach1.setText("THỂ LOẠI");
+        jlbmuontrasach1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlbmuontrasachMouseClicked(evt);
+                jlbmuontrasach1MouseClicked(evt);
             }
         });
-        jPanel9.add(jlbmuontrasach, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 280, 60));
+        jPanel12.add(jlbmuontrasach1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 190, 60));
+
+        jPanel9.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel19.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbmuontrasach2.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        jlbmuontrasach2.setForeground(new java.awt.Color(255, 255, 255));
+        jlbmuontrasach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icon_menu0_white_24dp.png"))); // NOI18N
+        jlbmuontrasach2.setText("THỂ LOẠI");
+        jlbmuontrasach2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbmuontrasach2MouseClicked(evt);
+            }
+        });
+        jPanel19.add(jlbmuontrasach2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 190, 60));
+
+        jPanel20.setBackground(new java.awt.Color(153, 153, 254));
+        jPanel20.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbmuontrasach3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        jlbmuontrasach3.setForeground(new java.awt.Color(255, 255, 255));
+        jlbmuontrasach3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icon_menu0_white_24dp.png"))); // NOI18N
+        jlbmuontrasach3.setText("THỂ LOẠI");
+        jlbmuontrasach3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbmuontrasach3MouseClicked(evt);
+            }
+        });
+        jPanel20.add(jlbmuontrasach3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 190, 60));
+
+        jPanel19.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel9.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jlbmuontrasach4.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        jlbmuontrasach4.setForeground(new java.awt.Color(255, 255, 255));
+        jlbmuontrasach4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icon_menu0_white_24dp.png"))); // NOI18N
+        jlbmuontrasach4.setText("THỂ LOẠI");
+        jlbmuontrasach4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbmuontrasach4MouseClicked(evt);
+            }
+        });
+        jPanel9.add(jlbmuontrasach4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 190, 60));
 
         jPanel28.setBackground(new java.awt.Color(153, 153, 254));
         jPanel28.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -231,6 +341,17 @@ public class ReaderFrame extends javax.swing.JFrame {
         jPanel32.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel28.add(jPanel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jlb_doiMK.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        jlb_doiMK.setForeground(new java.awt.Color(255, 255, 255));
+        jlb_doiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/QuanLyThuVien/images/icon_menu0_white_24dp.png"))); // NOI18N
+        jlb_doiMK.setText("ĐỔI MẬT KHẨU");
+        jlb_doiMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlb_doiMKMouseClicked(evt);
+            }
+        });
+        jPanel28.add(jlb_doiMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 245, 60));
 
         jPanel36.setBackground(new java.awt.Color(153, 153, 254));
         jPanel36.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -283,19 +404,16 @@ public class ReaderFrame extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(338, 338, 338))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(47, 47, 47))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(12, 12, 12)))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,11 +424,11 @@ public class ReaderFrame extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 610));
@@ -461,23 +579,13 @@ public class ReaderFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jlbexitMouseClicked
 
-    private void jlbmuontrasachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontrasachMouseClicked
-        ManageCategoryFrame mcf = new ManageCategoryFrame();
-        mcf.setVisible(true);
-        mcf.pack();
-        mcf.setLocationRelativeTo(null);
-        mcf.setResizable(false);
-        this.dispose();
-    }//GEN-LAST:event_jlbmuontrasachMouseClicked
-
-    private void jlbmuontraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontraMouseClicked
-        ManageBillsFrame mbf = new  ManageBillsFrame();
-        mbf.setVisible(true);
-        mbf.pack();
-        mbf.setLocationRelativeTo(null);
-        mbf.setResizable(false);
-        this.dispose();
-    }//GEN-LAST:event_jlbmuontraMouseClicked
+    private void jlb_doiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_doiMKMouseClicked
+        ChangePasswordFrame cpf = new ChangePasswordFrame();
+        cpf.setVisible(true);
+        cpf.pack();
+        cpf.setLocationRelativeTo(null);
+        cpf.setResizable(false);       
+    }//GEN-LAST:event_jlb_doiMKMouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
@@ -491,6 +599,35 @@ public class ReaderFrame extends javax.swing.JFrame {
         loginFrame.setResizable(false);
         this.dispose();
     }//GEN-LAST:event_btn_logoutActionPerformed
+
+    private void jlbmuontrasach1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontrasach1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlbmuontrasach1MouseClicked
+
+    private void jlbmuontrasach2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontrasach2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlbmuontrasach2MouseClicked
+
+    private void jlbmuontrasach3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontrasach3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlbmuontrasach3MouseClicked
+
+    private void jlbmuontrasach4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontrasach4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlbmuontrasach4MouseClicked
+
+    private void jlbmuontraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbmuontraMouseClicked
+        ManageCategoryFrame mcf = new ManageCategoryFrame();
+        mcf.setVisible(true);
+        mcf.pack();
+        mcf.setLocationRelativeTo(null);
+        mcf.setResizable(false);
+        this.dispose();
+    }//GEN-LAST:event_jlbmuontraMouseClicked
+
+    private void jPanel61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel61MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel61MouseClicked
 
     public static void main(String args[]) {
         try {
@@ -538,13 +675,16 @@ public class ReaderFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel24;
@@ -570,12 +710,23 @@ public class ReaderFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel61;
+    private javax.swing.JPanel jPanel62;
+    private javax.swing.JPanel jPanel63;
+    private javax.swing.JPanel jPanel64;
+    private javax.swing.JPanel jPanel65;
+    private javax.swing.JPanel jPanel66;
+    private javax.swing.JPanel jPanel67;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel jlb_book;
+    private javax.swing.JLabel jlb_doiMK;
     private javax.swing.JLabel jlb_user;
     private javax.swing.JLabel jlbexit;
     private javax.swing.JLabel jlbmuontra;
-    private javax.swing.JLabel jlbmuontrasach;
+    private javax.swing.JLabel jlbmuontrasach1;
+    private javax.swing.JLabel jlbmuontrasach2;
+    private javax.swing.JLabel jlbmuontrasach3;
+    private javax.swing.JLabel jlbmuontrasach4;
     // End of variables declaration//GEN-END:variables
 }
