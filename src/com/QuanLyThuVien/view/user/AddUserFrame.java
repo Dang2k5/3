@@ -110,7 +110,7 @@ public class AddUserFrame extends javax.swing.JFrame {
 
         btn_add.setBackground(new java.awt.Color(255, 51, 0));
         btn_add.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_add.setText("Add");
+        btn_add.setText("Thêm");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addActionPerformed(evt);
@@ -120,13 +120,13 @@ public class AddUserFrame extends javax.swing.JFrame {
 
         btn_back.setBackground(new java.awt.Color(255, 51, 0));
         btn_back.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_back.setText("Back");
+        btn_back.setText("Quay lại");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_backActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, 90, 40));
+        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, 100, 40));
 
         txt_confirmPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(txt_confirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 240, -1));

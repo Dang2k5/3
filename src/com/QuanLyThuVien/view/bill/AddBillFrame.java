@@ -6,6 +6,7 @@ import com.QuanLyThuVien.model.Bill;
 import com.QuanLyThuVien.model.Book;
 
 import com.QuanLyThuVien.model.Reader;
+import com.QuanLyThuVien.model.User;
 import com.QuanLyThuVien.service.BillDetailService;
 import com.QuanLyThuVien.service.BillService;
 import com.QuanLyThuVien.service.BookService;
@@ -26,6 +27,7 @@ public class AddBillFrame extends javax.swing.JFrame {
     private BookService bookService;
     private Book bookModel;
     private StringBuffer listIdBook = new StringBuffer();
+    private UserService userService;
     public AddBillFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -33,10 +35,11 @@ public class AddBillFrame extends javax.swing.JFrame {
         readerService = new ReaderService();
         bookModel = new Book();
         bookService = new BookService();
-        
+        userService = new UserService();
         
         List<Reader> readersList = readerService.getAllReader();
         List<Book> booksList = bookService.getAllBook();
+        List<User> usersList = userService.getUserByLeve(1);
         
         String []arrReader;
         arrReader = new String[readersList.size()];
@@ -51,8 +54,22 @@ public class AddBillFrame extends javax.swing.JFrame {
             length = tmp.length();
             tmp.delete(0, length);
         }
-        
         readerJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(arrReader));
+        
+        String []arrUser;
+        arrUser = new String[usersList.size()];
+        int k =0;
+        int length1 = 0;
+        StringBuilder tmp1 = new StringBuilder();
+        for(User item : usersList){
+            tmp1.append(String.valueOf(item.getUser_id())).append(" - ").append(userService.getUserById(item.getUser_id()).getName());
+            arrUser[k] = tmp1.toString();
+            k++;
+            length1 = tmp1.length();
+            tmp1.delete(0, length1);
+        }
+        userJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(arrUser));
+       
         String []arrBook;
         arrBook = new String[booksList.size()];
         
@@ -89,6 +106,8 @@ public class AddBillFrame extends javax.swing.JFrame {
         readerJComboBox = new javax.swing.JComboBox<>();
         chooseBookjComboBox = new javax.swing.JComboBox<>();
         chooseBookButton = new javax.swing.JButton();
+        userJComboBox = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         dateTextField = new javax.swing.JTextField();
@@ -172,7 +191,7 @@ public class AddBillFrame extends javax.swing.JFrame {
         jLabel3.setText(" (mã sách cách nhau bởi dấu cách)");
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setText("Mã Người Đọc");
+        jLabel6.setText("Mã độc giả");
 
         readerJComboBox.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         readerJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -189,6 +208,12 @@ public class AddBillFrame extends javax.swing.JFrame {
             }
         });
 
+        userJComboBox.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        userJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel11.setText("Mã thủ thư");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -199,17 +224,19 @@ public class AddBillFrame extends javax.swing.JFrame {
                     .addComponent(bookIdTextField)
                     .addComponent(readerJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(chooseBookjComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chooseBookButton))
+                    .addComponent(userJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3))
-                            .addComponent(jLabel6))
-                        .addGap(0, 119, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(chooseBookjComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(chooseBookButton)))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel11))
+                        .addGap(0, 119, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -219,6 +246,10 @@ public class AddBillFrame extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(readerJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -364,12 +395,13 @@ public class AddBillFrame extends javax.swing.JFrame {
         billModel.setDate_muon(dateTextField.getText());
         billModel.setDate_hen(dateHenTextField.getText());
         billModel.setDeposit(Integer.parseInt(depositTextField.getText()));
+        StringTokenizer readerToken = new StringTokenizer(String.valueOf(userJComboBox.getSelectedItem()));
         
-        UserService userService = new UserService();
-        billModel.setUser_id(userService.getCurrentUserid());             
-        StringTokenizer readerToken = new StringTokenizer(String.valueOf(readerJComboBox.getSelectedItem()));
+        billModel.setUser_id(Integer.parseInt(readerToken.nextToken()));
+                 
+        StringTokenizer readerToken1 = new StringTokenizer(String.valueOf(readerJComboBox.getSelectedItem()));
         
-        billModel.setReader_id(Integer.parseInt(readerToken.nextToken()));
+        billModel.setReader_id(Integer.parseInt(readerToken1.nextToken()));
         
         billService.addBill(billModel);
         
@@ -381,7 +413,7 @@ public class AddBillFrame extends javax.swing.JFrame {
         while(token.hasMoreTokens()){
             idBookList.add(Integer.valueOf(token.nextToken()));
         }
-        billDetailService.addBook(idBookList, idBillNew);
+        billDetailService.addBill(idBookList, idBillNew);
         
         this.dispose();
     }//GEN-LAST:event_addBillButtonActionPerformed
@@ -427,6 +459,7 @@ public class AddBillFrame extends javax.swing.JFrame {
     private javax.swing.JTextField depositTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -441,5 +474,6 @@ public class AddBillFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JComboBox<String> readerJComboBox;
+    private javax.swing.JComboBox<String> userJComboBox;
     // End of variables declaration//GEN-END:variables
 }

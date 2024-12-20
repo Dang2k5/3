@@ -9,7 +9,6 @@ import javax.swing.JTable;
 
 
 public class UserService {
-    private static int currentUserid;
     private UserDao userDao;
 
     public UserService() {
@@ -23,6 +22,9 @@ public class UserService {
         return userDao.getAllUser();
     }
     
+    public List<User> getUserByLeve(int leve){
+        return userDao.getUserByLeve(leve);
+    }
     public void addUser(User user){
         userDao.addUser(user);
     }
@@ -46,24 +48,16 @@ public class UserService {
         userDao.deleteUser(user_id);
     }
     
-    public void blockUser(int user_id){
-        userDao.blockUser(user_id);
+    public boolean blockUser(int user_id){
+        return userDao.blockUser(user_id);
     }
     
-    public void unlockUser(int user_id){
-        userDao.unlockUser(user_id);
+    public boolean unlockUser(int user_id){
+        return userDao.unlockUser(user_id);
     }
     
     public User CheckLogin(String userName, String passWord){
         return userDao.checkLogin(userName, passWord);
-    }
-    
-    public void setCurrentUserid(int userId){
-        UserService.currentUserid = userId;
-    }
-    
-    public int getCurrentUserid(){
-        return UserService.currentUserid;
     }
     
     public JTable StatisUserByName(){

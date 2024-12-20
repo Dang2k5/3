@@ -60,7 +60,7 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         defaultTableModel.addColumn("Thể loại");
         defaultTableModel.addColumn("Ngày trả");
         defaultTableModel.addColumn("Tiền phạt");
-        
+        int fined = caculatorFined.Caculator(billModel.getDate_hen());
         List<BillDetail> billdetails = billDetailService.getAllBillDetail(billId);
         int stt = 1;
         String ngayTra = "";
@@ -78,6 +78,7 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         }
         tienPhat.append(tongTienPhat);
         tienPhat.append(" VNĐ");
+        ngayTraLabel.setText(ngayTra);
         finedLabel.setText(tienPhat.toString());
     }
 
@@ -342,13 +343,13 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
 
         bookTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã sách", "Tên Sách", "Tên tác giả", "Thể loại", "Trạng thái"
+                "STT", "Mã sách", "Tên Sách", "Tên tác giả", "Thể loại", "Trạng thái", "Phí phạt"
             }
         ));
         jScrollPane1.setViewportView(bookTable);
@@ -415,7 +416,16 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void returnBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBookButtonActionPerformed
-         defaultTableModel = new DefaultTableModel(){
+        caculatorFined = new CaculatorFined();
+
+        int row = bookTable.getSelectedRow();
+
+        int billDetailId = Integer.valueOf(String.valueOf(bookTable.getValueAt(row, 1)));
+
+        int fined = caculatorFined.Caculator(billModel.getDate_hen());
+        System.out.println(billDetailId +"  "+fined);
+        billDetailService.update(billDetailId, fined); 
+        defaultTableModel = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // Không cho phép người dùng sửa dữ liệu
@@ -430,20 +440,11 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
         defaultTableModel.addColumn("Thể loại");
         defaultTableModel.addColumn("Ngày trả");
         defaultTableModel.addColumn("Tiền phạt");
-        caculatorFined = new CaculatorFined();
+        
 
-        int row = bookTable.getSelectedRow();
-
-        int billDetailId = Integer.parseInt(String.valueOf(bookTable.getValueAt(row, 1)));
-
-        int fined = caculatorFined.Caculator(billModel.getDate_hen());
-        System.out.println(billDetailId +"  "+fined);
-        billDetailService.update(billDetailId, fined);
-
-       
 
         List<BillDetail> billDetals = billDetailService.getAllBillDetail(billModel.getBill_id());
-
+        
         int stt =1;
         String ngayTra = "";
         int countTienPhat = 0;
@@ -465,23 +466,7 @@ public class ShowBillDetailFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_returnBookButtonActionPerformed
 
     
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShowBillDetailFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+    public static void main(String args[]) {        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ShowBillDetailFrame(19).setVisible(true);

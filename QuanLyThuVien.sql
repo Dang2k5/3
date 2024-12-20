@@ -63,7 +63,8 @@ CREATE TABLE Bill_Detail(
 	ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Book_id) REFERENCES Book(Book_id)
 	ON UPDATE CASCADE ON DELETE CASCADE,
-	Fined NVARCHAR(100) NOT NULL
+	Date_pay NVARCHAR(50),
+	Fined INT DEFAULT 0
 ) 
 DROP TABLE Bill_Detail
 -----
@@ -71,8 +72,7 @@ INSERT INTO Reader (Address, Email, Name, Phone) VALUES
 (N'Hà Nội', 'dangdao2k5@gmail.com', N'Đăng Đào', '0387780807'),
 (N'Hưng Yên', 'hieu@gmail.com', N'Minh Hiếu', '0130102301'),
 (N'Hưng Yên', 'trung@gamil.com', N'Văn Trung', '0120301230')
-select *from Reader
-
+SELECT *FROM Reader
 INSERT INTO Category ( Category_name) VALUES
 ( N'Sách Ngôn Tình'),
 ( N'Sách Tiểu thuyết'),
@@ -98,30 +98,21 @@ VALUES(N'Đăng Đào', 0, '0387780807', 'admin', 'admin', 1),
 (N'Đông', 1, '0203012012', 'dong', '1234', 1),
 (N'Hồng', 2, '0203012012', 'hong', '1234', 1),
 (N'Nam', 2, '023103012', 'nam', '1234' , 0)
-select *from Users
+SELECT *FROM Users
 
 
 INSERT INTO Bill(Reader_id, Users_id, Date_muon, Date_hen, Deposit) 
 VALUES(1,1,'16/12/2024', '20/12/2024', 10000),
 (2,2,'17/12/2024', '29/12/2024', 20000)
+
+
 SELECT *FROM Bill
+DELETE FROM Bill
 
-INSERT INTO Bill(Reader_id, Users_id, Date_muon, Date_hen, Deposit) 
-VALUES(3,3,'16/12/2024', '20/12/2024', 10000)
+SELECT *FROM Users
+SELECT *FROM Reader
+SELECT *FROM Category
+SELECT *FROM Book
 SELECT *FROM Bill
-delete from bill
+SELECT *FROM Bill_Detail
 
-
-
-
--- 1. Chỉ mục cho bảng `bill`
-CREATE INDEX idx_reader_id ON bill (Reader_id);
-CREATE INDEX idx_bill_ibfk_1 ON bill (Users_id);
-
--- 2. Chỉ mục cho bảng `bill_detail`
-CREATE INDEX idx_book_id ON Bill_Detail (Book_id);
-CREATE INDEX idx_bill_id ON Bill_Detail (Bill_id);
-
--- 3. Chỉ mục cho bảng `book`
-
-CREATE INDEX idx_category_id ON Book (Category_id);

@@ -68,7 +68,7 @@ public class BillDao {
          
         Connection connection = DBConnect.getJDBCConnection();
         
-        String sql = "SELECT TOP(1) * FROM Bill ORDER BY Bill_id DESC";    
+        String sql = "SELECT TOP 1 * FROM Bill ORDER BY Bill_id DESC";    
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();

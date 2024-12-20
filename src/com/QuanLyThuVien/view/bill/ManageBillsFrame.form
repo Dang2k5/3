@@ -67,7 +67,7 @@
                                   <Component id="btn_timkiem" min="-2" pref="130" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="btn_sua" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_show" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btn_them" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -112,7 +112,7 @@
                           <Component id="btn_capnhat" alignment="3" pref="48" max="32767" attributes="0"/>
                       </Group>
                       <Component id="btn_them" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btn_sua" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btn_show" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -293,7 +293,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btn_sua">
+        <Component class="javax.swing.JButton" name="btn_show">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="0" red="ff" type="rgb"/>
@@ -307,7 +307,7 @@
             <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_suaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_showActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">

@@ -79,7 +79,29 @@ public class UserDao {
         return ds;
     }
     
-     
+    public List<User> getUserByLeve(int leve){       
+        Connection connection = DBConnect.getJDBCConnection();       
+        String sql = "SELECT * FROM Users WHERE Leve = ?";    
+        List<User> users = new ArrayList<User>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, leve);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                User user = new User();
+                user.setUser_id(rs.getInt("Users_id"));
+                user.setName(rs.getString("Name"));
+                user.setPhone(rs.getString("Phone"));
+                user.setLeve(rs.getInt("Leve"));
+                user.setFlag(rs.getInt("Flag"));
+                user.setUsername(rs.getString("Username"));
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return users;
+    }
    
     public User getUserById(int user_id){       
         Connection connection = DBConnect.getJDBCConnection();       
@@ -97,6 +119,7 @@ public class UserDao {
                 user.setPhone(rs.getString("Phone"));
                 user.setUsername(rs.getString("Username"));
                 user.setPassword(rs.getString("Password"));
+                user.setFlag(rs.getInt("Flag"));
                 return user;
             }
         } catch (SQLException ex) {
@@ -104,31 +127,7 @@ public class UserDao {
         }
         return null;
     }
-//   public Boolean CheckUsername(String username){
-//         
-//        Connection connection = DBConnect.getJDBCConnection();
-//        
-//        String sql = "SELECT * FROM Users WHERE Username = ?";    
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//            preparedStatement.setString(1, username);
-//            ResultSet rs = preparedStatement.executeQuery();
-//            
-//            int count=0;
-//            while(rs.next()){
-//                count++;
-//            }
-//            if(count == 0){
-//                return true;
-//            }
-//            else{
-//                return false;
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return null;
-//    }
+
     public User CheckUsername(String username){
          
         Connection connection = DBConnect.getJDBCConnection();
@@ -252,32 +251,37 @@ public class UserDao {
         int result = statement.executeUpdate("DELETE FROM Users WHERE Users_id=" + user_id);
     }
     
-    public void blockUser(int user_id){
+    public boolean blockUser(int user_id){
         Connection connection = DBConnect.getJDBCConnection();
         
-        String sql = "UPDATE Users SET Flag=0 WHERE Users_id=?";
+        String sql = "UPDATE Users SET Flag = 0 WHERE Users_id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, user_id);
-            ResultSet rs = preparedStatement.executeQuery();
-            
+            int rs = preparedStatement.executeUpdate();
+            if(rs > 0){
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
     
-    public void unlockUser(int user_id){
+    public boolean unlockUser(int user_id){
         Connection connection = DBConnect.getJDBCConnection();
         
-        String sql = "UPDATE Users SET Flag=1 WHERE user_id=?";
+        String sql = "UPDATE Users SET Flag = 1 WHERE Users_id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, user_id);
-            ResultSet rs = preparedStatement.executeQuery();
-            
+            int rs = preparedStatement.executeUpdate();
+            if(rs > 0)
+                return true;
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
     public JTable StatisUserByName(){
         

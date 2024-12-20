@@ -6,7 +6,6 @@ import com.QuanLyThuVien.model.User;
 import com.QuanLyThuVien.service.BillService;
 import com.QuanLyThuVien.service.ReaderService;
 import com.QuanLyThuVien.service.UserService;
-import com.QuanLyThuVien.view.AdminFrame;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -57,7 +56,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
         btn_xoa = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jlb_back = new javax.swing.JLabel();
-        btn_sua = new javax.swing.JButton();
+        btn_show = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         btn_timkiem = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -141,13 +140,13 @@ public class ManageBillsFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btn_sua.setBackground(new java.awt.Color(255, 0, 255));
-        btn_sua.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btn_sua.setForeground(new java.awt.Color(255, 255, 255));
-        btn_sua.setText("Chi tiết");
-        btn_sua.addActionListener(new java.awt.event.ActionListener() {
+        btn_show.setBackground(new java.awt.Color(255, 0, 255));
+        btn_show.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btn_show.setForeground(new java.awt.Color(255, 255, 255));
+        btn_show.setText("Chi tiết");
+        btn_show.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_suaActionPerformed(evt);
+                btn_showActionPerformed(evt);
             }
         });
 
@@ -203,7 +202,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btn_sua)
+                                .addComponent(btn_show)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_them)
                                 .addGap(18, 18, 18)
@@ -236,7 +235,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
                         .addComponent(btn_xoa, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                         .addComponent(btn_capnhat, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                     .addComponent(btn_them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_show, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_timkiem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -296,7 +295,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_billTableMouseClicked
     // sửa
-    private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
+    private void btn_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showActionPerformed
         int row = billTable.getSelectedRow();
         if(row == -1){
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sách trước!","Lỗi",JOptionPane.ERROR);
@@ -305,7 +304,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
             int billId = Integer.parseInt(String.valueOf(billTable.getValueAt(row, 0)));
             new ShowBillDetailFrame(billId).setVisible(true);
         }
-    }//GEN-LAST:event_btn_suaActionPerformed
+    }//GEN-LAST:event_btn_showActionPerformed
 
     private void btn_timkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_timkiemActionPerformed
         String searchKeyWord;
@@ -357,6 +356,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ManageBillsFrame().setVisible(true);
             }
@@ -366,7 +366,7 @@ public class ManageBillsFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable billTable;
     private javax.swing.JButton btn_capnhat;
-    private javax.swing.JButton btn_sua;
+    private javax.swing.JButton btn_show;
     private javax.swing.JButton btn_them;
     private javax.swing.JButton btn_timkiem;
     private javax.swing.JButton btn_xoa;

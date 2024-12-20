@@ -202,6 +202,10 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vai trò không khớp.");
             return;
         }
+        if(user.getFlag() == 0){
+            JOptionPane.showMessageDialog(this, "Tài khoản đã bị khóa.");
+            return;
+        }
         if (roleIndex == 0 && user.getUsername().equals("admin")) { // Quản trị viên
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công.");
             AdminFrame testDashboard = new AdminFrame();

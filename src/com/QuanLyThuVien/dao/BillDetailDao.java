@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BillDetailDao {
-    public void addBook(List<Integer> book_ids, int bill_id){
+    public void addBill(List<Integer> book_ids, int bill_id){
        Connection connection = DBConnect.getJDBCConnection();
        
         for(Integer book_id : book_ids){
@@ -61,7 +61,7 @@ public class BillDetailDao {
     
     public void update(int billDetail_id,int fined){
         Connection connection = DBConnect.getJDBCConnection();
-        String sql = "UPDATE Bill_detail SET Fined=?,Date_pay=? WHERE Book_id=?";
+        String sql = "UPDATE Bill_detail SET Fined = ?,Date_pay = ? WHERE Book_id=?";
         
         long millis=System.currentTimeMillis();  
         java.sql.Date date = new java.sql.Date(millis); 

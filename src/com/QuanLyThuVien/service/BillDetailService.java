@@ -12,8 +12,8 @@ public class BillDetailService {
         billDetailDao = new BillDetailDao();
     }
     
-    public void addBook(List<Integer> book_ids, int bill_id){
-        billDetailDao.addBook(book_ids, bill_id);
+    public void addBill(List<Integer> book_ids, int bill_id){
+        billDetailDao.addBill(book_ids, bill_id);
     }
     
     public List<BillDetail> getAllBillDetail(int billId){
